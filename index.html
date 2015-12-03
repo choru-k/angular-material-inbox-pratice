@@ -13,6 +13,7 @@
 </head>
 
 <body layout="column" ng-controller="AppController">
+    <!-- 깊이감을 위해 md-whiteframe을 추가하였다 -->
     <md-toolbar layout="row" class="md-whiteframe-4dp">
         <div class="md-toolbar-tools">
             <md-button ng-click="click_toggle()"  class="md-icon-button">
@@ -26,7 +27,7 @@
         </div>
     </md-toolbar>
     <div layout="row" layout="wrap" flex>
-        <div layout="column" ng-show="nav" class="md-sidenav-left md-whiteframe-1dp nav">
+        <div layout="column" ng-show="nav" class="md-sidenav-left nav">
             <md-button class="md-accent">Button 1</md-button>
             <md-button class="md-accent">Button 2</md-button>
         </div>
@@ -36,11 +37,14 @@
             <md-content layout="column" flex class="md-padding">
                 <div layout="column" flex class="md-whiteframe-4dp mail-box">
                     <md-list>
+                        <!-- ng-repeat을 통해 md-list-item을 반복한다 -->
                         <md-list-item ng-repeat="email in emails" layout="row">
-                            <md-icon class="md-avatar-icon from-icon" md-svg-icon="communication:phone"></md-icon>
+                            <!-- 아이콘 창은 비워두었다-->
+                            <md-icon class="md-avatar-icon from-icon" md-svg-icon=""></md-icon>
                             <span class="from-span"> {{email.from}}</span>
                             <span> {{email.title}} -</span>
                             <span> {{email.context}}</span>
+                            <!--각 메일마다 경계선을 만들기 위해 md-divider을 사용하였다-->
                             <md-divider></md-divider>
                         </md-list-item>
                     </md-list>
