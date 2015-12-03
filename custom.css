@@ -10,6 +10,9 @@ md-content {
     background: #f2f2f2;
 }
 
+.home-text{
+    width: 150px;
+}
 .from-icon {
     width: 20px;
     height: 20px;
@@ -19,6 +22,19 @@ md-content {
     background: white;
 }
 
+.mail-box-list{
+    padding: 0;
+}
+
 .from-span {
     width: 100px;
+}
+/* 찾기 창의 색을 변경하고 어느정도 패딩을 줌으로써 사각형안에 글을 쓰는 느낌을 준다. */
+.find-form {
+    padding: 5px;
+    background: #E57373;
+    border-radius: 3px;
+}
+input.find-form-input{
+    color: white;
 }

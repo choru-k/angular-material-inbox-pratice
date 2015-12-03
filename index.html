@@ -19,11 +19,25 @@
             <md-button ng-click="click_toggle()"  class="md-icon-button">
                 <md-icon aria-label="Menu" md-svg-icon="https://s3-us-west-2.amazonaws.com/s.cdpn.io/68133/menu.svg">
                 </md-icon>
-            </md-button><md-button ng-click="vm.toggleSidenav('left')" hide-gt-sm class="md-icon-button">
-            <md-icon aria-label="Menu" md-svg-icon="https://s3-us-west-2.amazonaws.com/s.cdpn.io/68133/menu.svg">
-            </md-icon>
-        </md-button>
-            <h1>Inbox Test </h1>
+            </md-button>
+            <h1 class="home-text">Inbox Test </h1>
+            <!-- md-input-container 있으니깐 썻다. 쓴다면 나중에 여러 조건에서 쓰기 편리하다. material-angular의 홈페이지의 md-input 에 대해 알아보자-->
+            <md-input-container class="find-form" flex>
+                <input type="text" ng-model="find_mail" class="find-form-input">
+            </md-input-container>
+            <md-button class="md-icon-button">
+                <md-icon aria-label="Menu" md-svg-icon="https://s3-us-west-2.amazonaws.com/s.cdpn.io/68133/menu.svg">
+                </md-icon>
+            </md-button>
+            <md-button class="md-icon-button">
+                <md-icon aria-label="Menu" md-svg-icon="https://s3-us-west-2.amazonaws.com/s.cdpn.io/68133/menu.svg">
+                </md-icon>
+            </md-button>
+            <md-button class="md-icon-button">
+                <md-icon aria-label="Menu" md-svg-icon="https://s3-us-west-2.amazonaws.com/s.cdpn.io/68133/menu.svg">
+                </md-icon>
+            </md-button>
+
         </div>
     </md-toolbar>
     <div layout="row" layout="wrap" flex>
@@ -35,10 +49,11 @@
         그리고 sidebar는 버튼클릭을 통해 보엿다 안보였다를 하기 위해 ng-show를 하였음-->
         <div layout="column" id="content" flex>
             <md-content layout="column" flex class="md-padding">
-                <div layout="column" flex class="md-whiteframe-4dp mail-box">
-                    <md-list>
+                <!-- 위아래는 전체를 채우는게 아니라 적당히 컨텐츠 크기에만 맞추면 됨으로 flex를 삭제했다-->
+                <div layout="column" class="md-whiteframe-4dp mail-box">
+                    <md-list class="mail-box-list">
                         <!-- ng-repeat을 통해 md-list-item을 반복한다 -->
-                        <md-list-item ng-repeat="email in emails" layout="row">
+                        <md-list-item ng-repeat="email in emails track by $index" layout="row">
                             <!-- 아이콘 창은 비워두었다-->
                             <md-icon class="md-avatar-icon from-icon" md-svg-icon=""></md-icon>
                             <span class="from-span"> {{email.from}}</span>
