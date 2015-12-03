@@ -2,4 +2,22 @@ div.nav {
     width : 200px !important;
     min-width : 200px !important;
     max-width : 200px !important;
+    background: #f2f2f2;
+}
+
+md-content {
+    background: #f2f2f2;
+}
+
+.from-icon {
+    width: 20px;
+    height: 20px;
+    margin-left: 20px;
+}
+.mail-box {
+    background: white;
+}
+
+.from-span {
+    width: 100px;
 }

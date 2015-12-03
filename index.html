@@ -12,13 +12,9 @@
     <script src="app.js"></script>
 </head>
 
-<body layout="column" ng-controller="AppController as vm">
-    <md-toolbar layout="row">
+<body layout="column" ng-controller="AppController">
+    <md-toolbar layout="row" class="md-whiteframe-4dp">
         <div class="md-toolbar-tools">
-            <md-button ng-click="vm.toggleSidenav('left')" hide-gt-sm class="md-icon-button">
-                <md-icon aria-label="Menu" md-svg-icon="https://s3-us-west-2.amazonaws.com/s.cdpn.io/68133/menu.svg">
-                </md-icon>
-            </md-button>
             <md-button ng-click="click_toggle()"  class="md-icon-button">
                 <md-icon aria-label="Menu" md-svg-icon="https://s3-us-west-2.amazonaws.com/s.cdpn.io/68133/menu.svg">
                 </md-icon>
@@ -38,7 +34,17 @@
         그리고 sidebar는 버튼클릭을 통해 보엿다 안보였다를 하기 위해 ng-show를 하였음-->
         <div layout="column" id="content" flex>
             <md-content layout="column" flex class="md-padding">
-                Contents
+                <div layout="column" flex class="md-whiteframe-4dp mail-box">
+                    <md-list>
+                        <md-list-item ng-repeat="email in emails" layout="row">
+                            <md-icon class="md-avatar-icon from-icon" md-svg-icon="communication:phone"></md-icon>
+                            <span class="from-span"> {{email.from}}</span>
+                            <span> {{email.title}} -</span>
+                            <span> {{email.context}}</span>
+                            <md-divider></md-divider>
+                        </md-list-item>
+                    </md-list>
+                </div>
             </md-content>
         </div>
     </div>

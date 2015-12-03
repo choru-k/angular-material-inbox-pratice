@@ -10,6 +10,18 @@ app.controller('AppController', function($scope) {
         console.log($scope.nav);
     };
 
+    $scope.emails = [
+        {from: "kang",
+            title: "Title",
+            context: "this is context"},
+        {from: "lee",
+            title: "Title",
+            context: "this is context"},
+        {from: "wow",
+            title: "Title",
+            context: "this is context"}
+    ];
+
 });
 
 app.config(function($mdThemingProvider){
