@@ -20,6 +20,7 @@ md-content {
 }
 .mail-box {
     background: white;
+    max-width: 900px;
 }
 
 .mail-box-list{
@@ -35,6 +36,21 @@ md-content {
     background: #E57373;
     border-radius: 3px;
 }
+.search_icon{
+    margin-left: 20px;
+    margin-right: 20px;
+}
 input.find-form-input{
     color: white;
+}
+/* 사이드바의 폰트를 바꿈 */
+.nav_button {
+    margin: 0;
+    padding: 10px;
+    font-family: 'Open Sans', sans-serif;
+    text-align: left;
+}
+/* 같은곳에서 시작하기 위해 icon의 width를 줌*/
+.sidebar-icon {
+    width: 50px;
 }

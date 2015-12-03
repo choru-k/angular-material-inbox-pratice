@@ -8,6 +8,11 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-aria.min.js"></script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.0-rc1/angular-material.min.js"></script>
+
+    <!-- 그 사이드바에 폰트가 너무 두꺼워서 폰트를 바꾸기 위해 webfont를 사용-->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
+
+
     <link rel="stylesheet" href="custom.css">
     <script src="app.js"></script>
 </head>
@@ -22,28 +27,69 @@
             </md-button>
             <h1 class="home-text">Inbox Test </h1>
             <!-- md-input-container 있으니깐 썻다. 쓴다면 나중에 여러 조건에서 쓰기 편리하다. material-angular의 홈페이지의 md-input 에 대해 알아보자-->
-            <md-input-container class="find-form" flex>
-                <input type="text" ng-model="find_mail" class="find-form-input">
+            <md-input-container class="find-form" flex layout="row">
+                <span>
+                    <md-icon aria-label="Menu" md-svg-icon="./icon/ic_search_white_24px.svg" class="search_icon">
+                    </md-icon>
+                </span>
+                <span flex>
+                    <!-- 검색창을 다 채우기 위해서 width:100% 를 줌 css로 옮겨도 지장 없지만 귀찮-->
+                    <input type="text" ng-model="find_mail" class="find-form-input" style="width: 100%;">
+                </span>
+
             </md-input-container>
             <md-button class="md-icon-button">
-                <md-icon aria-label="Menu" md-svg-icon="https://s3-us-west-2.amazonaws.com/s.cdpn.io/68133/menu.svg">
+                <md-icon aria-label="Menu" md-svg-icon="./icon/ic_star_black_24px.svg">
                 </md-icon>
             </md-button>
             <md-button class="md-icon-button">
-                <md-icon aria-label="Menu" md-svg-icon="https://s3-us-west-2.amazonaws.com/s.cdpn.io/68133/menu.svg">
+                <md-icon aria-label="Menu" md-svg-icon="./icon/ic_add_white_24px.svg">
                 </md-icon>
             </md-button>
             <md-button class="md-icon-button">
-                <md-icon aria-label="Menu" md-svg-icon="https://s3-us-west-2.amazonaws.com/s.cdpn.io/68133/menu.svg">
+                <md-icon aria-label="Menu" md-svg-icon="./icon/ic_shopping_cart_white_24px.svg">
                 </md-icon>
             </md-button>
-
         </div>
     </md-toolbar>
     <div layout="row" layout="wrap" flex>
         <div layout="column" ng-show="nav" class="md-sidenav-left nav">
-            <md-button class="md-accent">Button 1</md-button>
-            <md-button class="md-accent">Button 2</md-button>
+            <md-button class="nav_button">
+                <md-icon aria-label="Menu" md-svg-icon="./icon/ic_email_white_24px.svg" class="sidebar-icon">
+                </md-icon>
+                <span flex>
+                    Mail
+                </span>
+            </md-button>
+            <md-button class="nav_button">
+                <md-icon aria-label="Menu" md-svg-icon="./icon/ic_done_white_24px.svg" class="sidebar-icon">
+                </md-icon>
+                <span flex>
+                    Check
+                </span>
+            </md-button>
+            <md-button class="nav_button">
+                <md-icon aria-label="Menu" md-svg-icon="./icon/ic_email_white_24px.svg" class="sidebar-icon">
+                </md-icon>
+                <span flex>
+                    Mail
+                </span>
+            </md-button>
+            <md-divider></md-divider>
+            <md-button class="nav_button">
+                <md-icon aria-label="Menu" md-svg-icon="./icon/ic_backup_white_24px.svg" class="sidebar-icon">
+                </md-icon>
+                <span flex>
+                    Back up
+                </span>
+            </md-button>
+            <md-button class="nav_button">
+                <md-icon aria-label="Menu" md-svg-icon="./icon/ic_email_white_24px.svg" class="sidebar-icon">
+                </md-icon>
+                <span flex>
+                    Mail
+                </span>
+            </md-button>
         </div>
         <!-- 일단 css에서 sidebar는 200px로 고정 나머지 부분을 전부다 contents로 하기 위해 flex를 사용.
         그리고 sidebar는 버튼클릭을 통해 보엿다 안보였다를 하기 위해 ng-show를 하였음-->
@@ -59,12 +105,15 @@
                             <span class="from-span"> {{email.from}}</span>
                             <span> {{email.title}} -</span>
                             <span> {{email.context}}</span>
-                            <!--각 메일마다 경계선을 만들기 위해 md-divider을 사용하였다-->
-                            <md-divider></md-divider>
+                            <!--각 메일마다 경계선을 만들기 위해 md-divider을 사용하였다 그리고 마지막에는 divider를 넣지 않도록 하였다-->
+                            <md-divider ng-if="!$last"></md-divider>
                         </md-list-item>
                     </md-list>
                 </div>
             </md-content>
+        </div>
+        <div layout="row" id="star_menu" ng-show="star_show" class="md-whiteframe-8dp">
+
         </div>
     </div>
 <!-- Angular Material Dependencies -->

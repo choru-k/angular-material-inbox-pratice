@@ -21,6 +21,8 @@ app.controller('AppController', function($scope) {
             context: "this is context"}
     ];
 
+
+
 });
 
 //전체적인 테마색을 red로 바꾸었다 이부분은 자기가 색깔을 조금씩 바꿔보면 바로 알것이다
