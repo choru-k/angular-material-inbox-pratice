@@ -13,34 +13,35 @@
 </head>
 
 <body layout="column" ng-controller="AppController as vm">
-<md-toolbar layout="row">
-    <div class="md-toolbar-tools">
-        <md-button ng-click="vm.toggleSidenav('left')" hide-gt-sm class="md-icon-button">
+    <md-toolbar layout="row">
+        <div class="md-toolbar-tools">
+            <md-button ng-click="vm.toggleSidenav('left')" hide-gt-sm class="md-icon-button">
+                <md-icon aria-label="Menu" md-svg-icon="https://s3-us-west-2.amazonaws.com/s.cdpn.io/68133/menu.svg">
+                </md-icon>
+            </md-button>
+            <md-button ng-click="click_toggle()"  class="md-icon-button">
+                <md-icon aria-label="Menu" md-svg-icon="https://s3-us-west-2.amazonaws.com/s.cdpn.io/68133/menu.svg">
+                </md-icon>
+            </md-button><md-button ng-click="vm.toggleSidenav('left')" hide-gt-sm class="md-icon-button">
             <md-icon aria-label="Menu" md-svg-icon="https://s3-us-west-2.amazonaws.com/s.cdpn.io/68133/menu.svg">
             </md-icon>
         </md-button>
-        <md-button ng-click="click_toggle()"  class="md-icon-button">
-            <md-icon aria-label="Menu" md-svg-icon="https://s3-us-west-2.amazonaws.com/s.cdpn.io/68133/menu.svg">
-            </md-icon>
-        </md-button><md-button ng-click="vm.toggleSidenav('left')" hide-gt-sm class="md-icon-button">
-        <md-icon aria-label="Menu" md-svg-icon="https://s3-us-west-2.amazonaws.com/s.cdpn.io/68133/menu.svg">
-        </md-icon>
-    </md-button>
-        <h1>Angular Material: &nbsp; Starter CodePen </h1>
+            <h1>Inbox Test </h1>
+        </div>
+    </md-toolbar>
+    <div layout="row" layout="wrap" flex>
+        <div layout="column" ng-show="nav" class="md-sidenav-left md-whiteframe-1dp nav">
+            <md-button class="md-accent">Button 1</md-button>
+            <md-button class="md-accent">Button 2</md-button>
+        </div>
+        <!-- 일단 css에서 sidebar는 200px로 고정 나머지 부분을 전부다 contents로 하기 위해 flex를 사용.
+        그리고 sidebar는 버튼클릭을 통해 보엿다 안보였다를 하기 위해 ng-show를 하였음-->
+        <div layout="column" id="content" flex>
+            <md-content layout="column" flex class="md-padding">
+                Contents
+            </md-content>
+        </div>
     </div>
-</md-toolbar>
-<div layout="row" layout="wrap" flex>
-    <md-sidenav layout="column" ng-show="nav" class="md-sidenav-left md-whiteframe-1dp" md-component-id="left" md-is-locked-open="$mdMedia('gt-sm')">
-        <md-button class="md-accent">Button 1</md-button>
-        <md-button class="md-accent">Button 2</md-button>
-    </md-sidenav>
-    <div layout="column" id="content">
-        <md-content layout="column" flex class="md-padding">
-            This Starter Application consists of a Toolbar, SideNav (with two buttons), and Content area.
-            <p>This is the content area! </p>
-        </md-content>
-    </div>
-</div>
 <!-- Angular Material Dependencies -->
 </body>
 
