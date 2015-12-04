@@ -70,6 +70,8 @@ app.controller('AppController', function($scope) {
     $scope.now_mail_view = false;
     $scope.up_mail_box = $scope.emails;
     $scope.down_mail_box = [];
+    //만약 메일을 클릭하면 위에 메일박스는 클릭한메일바로 전까지, 현재메일은 클릭한 메일, 밑의 메일박스는 클릭한메일뒤부터로 한다. slice통해 배열을 자를수있다.
+    //그리고 현재 메일을 보이게 한다
     $scope.mail_click = function (index) {
         $scope.up_mail_box = $scope.emails.slice(0,index);
         $scope.now_mail = $scope.emails[index];
@@ -77,7 +79,16 @@ app.controller('AppController', function($scope) {
         $scope.now_mail_view = true;
         $scope.now_mail_index = index;
     };
+    //만약 현재메일의 타이틀을 클릭시는 다시 원상태로 되돌아 가게 만든다.
+    $scope.click_now_mail_title = function () {
+        $scope.up_mail_box = $scope.emails;
+        $scope.now_mail = {};
+        $scope.down_mail_box = [];
+        $scope.now_mail_view = false;
+    };
 
+
+    //별을 클릭시에만 별메뉴가 보이게 한다
     $scope.star_show = false;
     $scope.star_click = function () {
         $scope.star_show = !$scope.star_show;

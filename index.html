@@ -111,9 +111,10 @@
                         </md-list-item>
                     </md-list>
                 </div>
-                <!-- 위 메일 박스, 아래 메일 박스 사이에 본문 메일이 들어가야한다-->
+                <!-- 위 메일 박스, 아래 메일 박스 사이에 본문 메일이 들어가야한다 now_mail_view가 true일 때 즉, 클릭한 메일이 있을때만 보이도록 한다-->
                 <div layout="column" class="md-whiteframe-8dp mail-box now-mail" ng-show="now_mail_view">
-                    <md-toolbar class="now-mail-header">
+                    <!-- 메일 타이틀이 클릭되었을때 함수를 호출하는데 이 함수는 now_mail을 끄는 함수이다. 클릭시 다시 원래대로 돌아간다-->
+                    <md-toolbar class="now-mail-header" ng-click="click_now_mail_title()">
                         <div class="md-toolbar-tools now-mail-header">
                             <h3 class="md-flex"> {{now_mail.title}}</h3>
                         </div>
@@ -123,7 +124,7 @@
                         {{now_mail.context}}
                     </md-content>
                 </div>
-                <!-- 나머지 밑의 메일 박스이다-->
+                <!-- 나머지 밑의 메일 박스이다 now_mail_view가 true일 때 즉, 클릭한 메일이 있을때만 보이도록 한다-->
                 <div layout="column" class="md-whiteframe-4dp mail-box" ng-show="now_mail_view">
                     <md-list class="mail-box-list">
                         <!-- ng-repeat을 통해 md-list-item을 반복한다 -->
