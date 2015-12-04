@@ -21,10 +21,34 @@ md-content {
 .mail-box {
     background: white;
     max-width: 900px;
+    /* now-mail박스만 커보이게 보이기 위해 다른 메일 박스에 마진을 주어서 크기를 줄인다*/
+    margin-left: 20px;
+    margin-right: 20px;
 }
 
 .mail-box-list{
     padding: 0;
+}
+.mail-box-list-item{
+
+}
+
+.now-mail {
+    /* 나우 메일 박스는 중간에 들어가기 때문에 위 아래에는 마진을 주어서 박스 사이를 띄게 하고
+        옆쪽에는 마진을 0으로 주어서 다른 박스보다 크게 보이게 한다
+        그리고 다른 박스보다 오른쪽 왼쪽 20px 20px 씩 크기 때문에 전체 max-width도 40px 더 크게 설정한다*/
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 0;
+    margin-right: 0;
+    max-width: 940px;
+}
+.now-mail-header {
+    background: white;
+    color: black;
+}
+.now-mail-context {
+    background: white;
 }
 
 .from-span {
@@ -50,7 +74,26 @@ input.find-form-input{
     font-family: 'Open Sans', sans-serif;
     text-align: left;
 }
-/* 같은곳에서 시작하기 위해 icon의 width를 줌*/
+/* 같은곳에서 시작하기 위해 icon의 width를 */
 .sidebar-icon {
     width: 50px;
+}
+#star_menu {
+    width: 320px;
+    height: 200px;
+    position: fixed;
+    right: 100px;
+    top: 68px;
+    background: white;
+}
+.star_menu_icon {
+    margin: 0;
+}
+.fab {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+}
+.email_context {
+    color: #909090;
 }
