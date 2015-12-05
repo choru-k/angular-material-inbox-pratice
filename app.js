@@ -1,5 +1,5 @@
-var app = angular.module('StarterApp', ['ngMaterial']);
-
+var app = angular.module('StarterApp', ['ngMaterial', 'ngAnimate']);
+//ngAnimate를 추가하였다. 그래서 custom.css를 보면 ng-hide에 대한 css animation을 쉽게 추가할수 있었다 이게 아니면 class기반으로 추가하여야 한다.
 app.controller('AppController', function($scope) {
 
     //테스트 데이터를 만들었다

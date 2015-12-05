@@ -1,9 +1,15 @@
-div.nav {
-    width : 200px !important;
-    min-width : 200px !important;
-    max-width : 200px !important;
+.sidebar {
     background: #f2f2f2;
+    width : 200px;
+    transition: 0.3s linear all;
+    overflow: hidden;
 }
+/* sidebar라는 것에 ng-hide가 추가되면 width:0로 만드는데 그게 app.js에 있는 ngAnimate가 그 작동을 수행함 hide자체가 애니메이션화됨
+    자세한 사항은 ngAnimate와 css animation을 참조*/
+.sidebar.ng-hide {
+    width: 0;
+}
+
 /*  md-content와 nav의 배경색을 그레이로 주어서 전체 색깔이 grey가 되었다
     그후 mail-box 클래스(즉 실제 내용부분)은 white컬러와 html을 보면 md-whiteframe을 추가하여 입체감을 주어서 카드느낌이 나게 되었다*/
 md-content {

@@ -1,0 +1,20 @@
+<md-fab-speed-dial md-direction="up" md-open="fab_open" class="fab">
+    <md-fab-trigger>
+        <!-- 버튼 위에 마우스를 갖다대면 열리고 마우스가 밖으로 나가면 사라짐 그고 다른 버튼들도 위에 있어야 유지-->
+        <md-button class="md-fab md-accent" ng-mouseover="fab_open = true" ng-mouseleave="fab_open = false">
+            <md-icon md-svg-icon="./icon/ic_add_white_24px.svg">
+            </md-icon>
+        </md-button>
+    </md-fab-trigger>
+    <md-fab-actions>
+        <md-button class="md-fab md-raised md-mini" ng-mouseover="fab_open = true" ng-mouseleave="fab_open = false" >
+            <md-icon md-svg-icon="./icon/ic_email_white_24px.svg"></md-icon>
+        </md-button>
+        <md-button class="md-fab md-raised md-mini" ng-mouseover="fab_open = true" ng-mouseleave="fab_open = false">
+            <md-icon md-svg-icon="./icon/ic_email_white_24px.svg"></md-icon>
+        </md-button>
+        <md-button class="md-fab md-raised md-mini" ng-mouseover="fab_open = true" ng-mouseleave="fab_open = false">
+            <md-icon md-svg-icon="./icon/ic_email_white_24px.svg"></md-icon>
+        </md-button>
+    </md-fab-actions>
+</md-fab-speed-dial>

@@ -1,0 +1,54 @@
+<!-- 일단 css에서 sidebar는 200px로 고정 나머지 부분을 전부다 contents로 하기 위해 flex를 사용.
+        그리고 sidebar는 버튼클릭을 통해 보엿다 안보였다를 하기 위해 ng-show를 하였음
+        md-content 안에서는 스크롤뷰가 생김. 즉 content가 커지더라도 사이드와 헤더는 고정인채 md-content만 움직이게 됨-->
+<div layout="column" id="content" flex>
+    <md-content layout="column" flex class="md-padding">
+        <!-- 위아래는 전체를 채우는게 아니라 적당히 컨텐츠 크기에만 맞추면 됨으로 flex를 삭제했다-->
+        <!-- 이건 위의 부분의 메일박스이다-->
+        <div layout="column" class="md-whiteframe-4dp mail-box">
+            <md-list class="mail-box-list">
+                <!-- ng-repeat을 통해 md-list-item을 반복한다 -->
+                <md-list-item ng-repeat="email in up_mail_box track by $index" layout="row" class="mail-box-list-item" ng-click="mail_click($index)">
+                    <!-- 아이콘 창은 비워두었다-->
+                    <md-icon class="md-avatar-icon from-icon" md-svg-icon=""></md-icon>
+                    <span class="from-span"> {{email.from}}</span>
+                    <span> {{email.title}} -</span>
+                    <span class="email_context"> {{email.context}}</span>
+                    <!--각 메일마다 경계선을 만들기 위해 md-divider을 사용하였다 그리고 지막에는 divider를 넣지 않도록 하였다-->
+                    <md-divider ng-if="!$last"></md-divider>
+                </md-list-item>
+            </md-list>
+        </div>
+        <!-- 위 메일 박스, 아래 메일 박스 사이에 본문 메일이 들어가야한다 now_mail_view가 true일 때 즉, 클릭한 메일이 있을때만 보이도록 한다 그리고 bounceIn class를 보일때만 추가하도록 하여 나타날때의 액션을 주었다
+            이것은 animate.css의 class 효과이다. 물론 jquery등을 이용하여 애니메이션을 조종하는 법도 있지만, angular을 사용하는 중에는 jquery는 되도록이면 안쓰는걸 추천한다
+            나중에 사용해 보면 알겠지만 jquery로 값을 바꿀경우 angular는 그걸 인식하기 못하기 때문에 $scope.$apply등으로 값을 다시 동기화 시켜주어야 하는데
+            이것외에도 좋은점보다는 안좋은점이 많으니 될수있도록 jquery를 사용하지 않고 css상이나 angular을 통해 해결하도록 하자-->
+        <div layout="column" class="md-whiteframe-8dp mail-box now-mail animated" ng-show="now_mail_view" ng-class="{bounceIn: now_mail_view}">
+            <!-- 메일 타이틀이 클릭되었을때 함수를 호출하는데 이 함수는 now_mail을 끄는 함수이다. 클릭시 다시 원래대로 돌아간다-->
+            <md-toolbar class="now-mail-header" ng-click="click_now_mail_title()">
+                <div class="md-toolbar-tools now-mail-header">
+                    <h3 class="md-flex"> {{now_mail.title}}</h3>
+                </div>
+            </md-toolbar>
+            <md-divider></md-divider>
+            <md-content layout-padding class="now-mail-context">
+                {{now_mail.context}}
+            </md-content>
+        </div>
+        <!-- 나머지 밑의 메일 박스이다 (now_mail_view가 true일 때) 는 지웠다 어차피 처음에 빈배열을 주면 생성안하기 때문에 필요없었다-->
+        <div layout="column" class="md-whiteframe-4dp mail-box">
+            <md-list class="mail-box-list">
+                <!-- ng-repeat을 통해 md-list-item을 반복한다 -->
+                <md-list-item ng-repeat="email in down_mail_box track by $index" layout="row" class="mail-box-list-item" ng-click="mail_click($index + now_mail_index +1)">
+                    <!-- 아이콘 창은 비워두었다-->
+                    <md-icon class="md-avatar-icon from-icon" md-svg-icon=""></md-icon>
+                    <span class="from-span"> {{email.from}}</span>
+                    <span> {{email.title}} -</span>
+                    <span class="email_context"> {{email.context}}</span>
+                    <!--각 메일마다 경계선을 만들기 위해 md-divider을 사용하였다 그리고 지막에는 divider를 넣지 않도록 하였다-->
+                    <md-divider ng-if="!$last"></md-divider>
+                </md-list-item>
+            </md-list>
+        </div>
+    </md-content>
+</div>

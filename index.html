@@ -11,188 +11,24 @@
 
     <!-- 그 사이드바에 폰트가 너무 두꺼워서 폰트를 바꾸기 위해 webfont를 사용-->
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
-
+    <!-- 메일창이 떠오르는것을 애니메이션하기 위해 animate.css 라는 라이브러리를 추가하였다. css animate 을 검색하여 참고하면서 알아보자-->
+    <link href="animate.css" rel="stylesheet">
 
     <link rel="stylesheet" href="custom.css">
     <script src="app.js"></script>
 </head>
 
 <body layout="column" ng-controller="AppController">
-    <!-- 깊이감을 위해 md-whiteframe을 추가하였다 -->
-    <md-toolbar layout="row" class="md-whiteframe-4dp">
-        <div class="md-toolbar-tools">
-            <md-button ng-click="click_toggle()"  class="md-icon-button">
-                <md-icon aria-label="Menu" md-svg-icon="https://s3-us-west-2.amazonaws.com/s.cdpn.io/68133/menu.svg">
-                </md-icon>
-            </md-button>
-            <h1 class="home-text">Inbox Test </h1>
-            <!-- md-input-container 있으니깐 썻다. 쓴다면 나중에 여러 조건에서 쓰기 편리하다. material-angular의 홈페이지의 md-input 에 대해 알아보자-->
-            <md-input-container class="find-form" flex layout="row">
-                <span>
-                    <md-icon aria-label="Menu" md-svg-icon="./icon/ic_search_white_24px.svg" class="search_icon">
-                    </md-icon>
-                </span>
-                <span flex>
-                    <!-- 검색창을 다 채우기 위해서 width:100% 를 줌 css로 옮겨도 지장 없지만 귀찮-->
-                    <input type="text" ng-model="find_mail" class="find-form-input" style="width: 99%;">
-                </span>
-            </md-input-container>
-            <md-button class="md-icon-button" ng-click="star_click()">
-                <md-icon aria-label="Menu" md-svg-icon="./icon/ic_star_black_24px.svg">
-                </md-icon>
-            </md-button>
-            <md-button class="md-icon-button">
-                <md-icon aria-label="Menu" md-svg-icon="./icon/ic_add_white_24px.svg">
-                </md-icon>
-            </md-button>
-            <md-button class="md-icon-button">
-                <md-icon aria-label="Menu" md-svg-icon="./icon/ic_shopping_cart_white_24px.svg">
-                </md-icon>
-            </md-button>
-        </div>
-    </md-toolbar>
+<!-- ng-include을 사용함으로써 더욱더 모듈화가 되었다. 이제 훨씬 코드 보기가 편할것 같다-->
+    <ng-include src="'header.html'"></ng-include>
     <div layout="row" layout="wrap" flex>
-        <div layout="column" ng-show="nav" class="md-sidenav-left nav">
-            <md-button class="nav_button">
-                <md-icon aria-label="Menu" md-svg-icon="./icon/ic_email_white_24px.svg" class="sidebar-icon">
-                </md-icon>
-                <span flex>
-                    Mail
-                </span>
-            </md-button>
-            <md-button class="nav_button">
-                <md-icon aria-label="Menu" md-svg-icon="./icon/ic_done_white_24px.svg" class="sidebar-icon">
-                </md-icon>
-                <span flex>
-                    Check
-                </span>
-            </md-button>
-            <md-button class="nav_button">
-                <md-icon aria-label="Menu" md-svg-icon="./icon/ic_email_white_24px.svg" class="sidebar-icon">
-                </md-icon>
-                <span flex>
-                    Mail
-                </span>
-            </md-button>
-            <md-divider></md-divider>
-            <md-button class="nav_button">
-                <md-icon aria-label="Menu" md-svg-icon="./icon/ic_backup_white_24px.svg" class="sidebar-icon">
-                </md-icon>
-                <span flex>
-                    Back up
-                </span>
-            </md-button>
-            <md-button class="nav_button">
-                <md-icon aria-label="Menu" md-svg-icon="./icon/ic_email_white_24px.svg" class="sidebar-icon">
-                </md-icon>
-                <span flex>
-                    Mail
-                </span>
-            </md-button>
-        </div>
-        <!-- 일단 css에서 sidebar는 200px로 고정 나머지 부분을 전부다 contents로 하기 위해 flex를 사용.
-        그리고 sidebar는 버튼클릭을 통해 보엿다 안보였다를 하기 위해 ng-show를 하였음
-        md-content 안에서는 스크롤뷰가 생김. 즉 content가 커지더라도 사이드와 헤더는 고정인채 md-content만 움직이게 됨-->
-        <div layout="column" id="content" flex>
-            <md-content layout="column" flex class="md-padding">
-                <!-- 위아래는 전체를 채우는게 아니라 적당히 컨텐츠 크기에만 맞추면 됨으로 flex를 삭제했다-->
-                <!-- 이건 위의 부분의 메일박스이다-->
-                <div layout="column" class="md-whiteframe-4dp mail-box">
-                    <md-list class="mail-box-list">
-                        <!-- ng-repeat을 통해 md-list-item을 반복한다 -->
-                        <md-list-item ng-repeat="email in up_mail_box track by $index" layout="row" class="mail-box-list-item" ng-click="mail_click($index)">
-                            <!-- 아이콘 창은 비워두었다-->
-                            <md-icon class="md-avatar-icon from-icon" md-svg-icon=""></md-icon>
-                            <span class="from-span"> {{email.from}}</span>
-                            <span> {{email.title}} -</span>
-                            <span class="email_context"> {{email.context}}</span>
-                            <!--각 메일마다 경계선을 만들기 위해 md-divider을 사용하였다 그리고 지막에는 divider를 넣지 않도록 하였다-->
-                            <md-divider ng-if="!$last"></md-divider>
-                        </md-list-item>
-                    </md-list>
-                </div>
-                <!-- 위 메일 박스, 아래 메일 박스 사이에 본문 메일이 들어가야한다 now_mail_view가 true일 때 즉, 클릭한 메일이 있을때만 보이도록 한다-->
-                <div layout="column" class="md-whiteframe-8dp mail-box now-mail" ng-show="now_mail_view">
-                    <!-- 메일 타이틀이 클릭되었을때 함수를 호출하는데 이 함수는 now_mail을 끄는 함수이다. 클릭시 다시 원래대로 돌아간다-->
-                    <md-toolbar class="now-mail-header" ng-click="click_now_mail_title()">
-                        <div class="md-toolbar-tools now-mail-header">
-                            <h3 class="md-flex"> {{now_mail.title}}</h3>
-                        </div>
-                    </md-toolbar>
-                    <md-divider></md-divider>
-                    <md-content layout-padding class="now-mail-context">
-                        {{now_mail.context}}
-                    </md-content>
-                </div>
-                <!-- 나머지 밑의 메일 박스이다 now_mail_view가 true일 때 즉, 클릭한 메일이 있을때만 보이도록 한다-->
-                <div layout="column" class="md-whiteframe-4dp mail-box" ng-show="now_mail_view">
-                    <md-list class="mail-box-list">
-                        <!-- ng-repeat을 통해 md-list-item을 반복한다 -->
-                        <md-list-item ng-repeat="email in down_mail_box track by $index" layout="row" class="mail-box-list-item" ng-click="mail_click($index + now_mail_index +1)">
-                            <!-- 아이콘 창은 비워두었다-->
-                            <md-icon class="md-avatar-icon from-icon" md-svg-icon=""></md-icon>
-                            <span class="from-span"> {{email.from}}</span>
-                            <span> {{email.title}} -</span>
-                            <span class="email_context"> {{email.context}}</span>
-                            <!--각 메일마다 경계선을 만들기 위해 md-divider을 사용하였다 그리고 지막에는 divider를 넣지 않도록 하였다-->
-                            <md-divider ng-if="!$last"></md-divider>
-                        </md-list-item>
-                    </md-list>
-                </div>
-            </md-content>
-        </div>
-        <!--  아마 여기에 어떻게 잘해서 위에 삼각형만 잘 만들면 inbox일텐데 그걸 모르겟다 ㅠ-->
-        <div id="star_menu" ng-show="star_show" class="md-whiteframe-1dp" layout="column">
-            <div layout="row" flex>
-                <md-button>
-                    <md-icon md-svg-icon="./icon/ic_email_white_24px.svg" class="star_menu_icon" flex>
-                    </md-icon>
-                </md-button>
-                <md-button>
-                    <md-icon md-svg-icon="./icon/ic_email_white_24px.svg" class="star_menu_icon" flex>
-                    </md-icon>
-                </md-button>
-                <md-button>
-                    <md-icon  md-svg-icon="./icon/ic_email_white_24px.svg" class="star_menu_icon" flex>
-                    </md-icon>
-                </md-button>
-            </div>
-            <div layout="row" flex>
-                <md-button>
-                    <md-icon  md-svg-icon="./icon/ic_email_white_24px.svg" class="star_menu_icon" flex>
-                    </md-icon>
-                </md-button>
-                <md-button>
-                    <md-icon md-svg-icon="./icon/ic_email_white_24px.svg" class="star_menu_icon" flex>
-                    </md-icon>
-                </md-button>
-                <md-button>
-                    <md-icon md-svg-icon="./icon/ic_email_white_24px.svg" class="star_menu_icon" flex>
-                    </md-icon>
-                </md-button>
-            </div>
-        </div>
+        <!-- 원래 div에서 하던걸 ng-include에서 처리한다 예를들어 클래스 sidebar나 ng-show라던가 -->
+        <ng-include src="'sidebar.html'" class="sidebar" ng-hide="!nav"></ng-include>
+        <!-- height를 전부다 쓰기 위해 layout='column'을 사용하였다 한번 지워보면 바로 안다-->
+        <ng-include src="'main.html'" flex layout="column"></ng-include>
+        <ng-include src="'star.html'"></ng-include>
     </div>
-    <md-fab-speed-dial md-direction="up" md-open="fab_open" class="fab">
-        <md-fab-trigger>
-            <!-- 버튼 위에 마우스를 갖다대면 열리고 마우스가 밖으로 나가면 사라짐 그고 다른 버튼들도 위에 있어야 유지-->
-            <md-button class="md-fab md-accent" ng-mouseover="fab_open = true" ng-mouseleave="fab_open = false">
-                <md-icon md-svg-icon="./icon/ic_add_white_24px.svg">
-                </md-icon>
-            </md-button>
-        </md-fab-trigger>
-        <md-fab-actions>
-            <md-button class="md-fab md-raised md-mini" ng-mouseover="fab_open = true" ng-mouseleave="fab_open = false" >
-                <md-icon md-svg-icon="./icon/ic_email_white_24px.svg"></md-icon>
-            </md-button>
-            <md-button class="md-fab md-raised md-mini" ng-mouseover="fab_open = true" ng-mouseleave="fab_open = false">
-                <md-icon md-svg-icon="./icon/ic_email_white_24px.svg"></md-icon>
-            </md-button>
-            <md-button class="md-fab md-raised md-mini" ng-mouseover="fab_open = true" ng-mouseleave="fab_open = false">
-                <md-icon md-svg-icon="./icon/ic_email_white_24px.svg"></md-icon>
-            </md-button>
-        </md-fab-actions>
-    </md-fab-speed-dial>
+    <ng-include src="'fab.html'"></ng-include>
 <!-- Angular Material Dependencies -->
 </body>
 

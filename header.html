@@ -1,0 +1,33 @@
+<!-- 깊이감을 위해 md-whiteframe을 추가하였다 -->
+<md-toolbar layout="row" class="md-whiteframe-4dp">
+    <div class="md-toolbar-tools">
+        <md-button ng-click="click_toggle()"  class="md-icon-button">
+            <md-icon aria-label="Menu" md-svg-icon="https://s3-us-west-2.amazonaws.com/s.cdpn.io/68133/menu.svg">
+            </md-icon>
+        </md-button>
+        <h1 class="home-text">Inbox Test </h1>
+        <!-- md-input-container 있으니깐 썻다. 쓴다면 나중에 여러 조건에서 쓰기 편리하다. material-angular의 홈페이지의 md-input 에 대해 알아보자-->
+        <md-input-container class="find-form" flex layout="row">
+                <span>
+                    <md-icon aria-label="Menu" md-svg-icon="./icon/ic_search_white_24px.svg" class="search_icon">
+                    </md-icon>
+                </span>
+                <span flex>
+                    <!-- 검색창을 다 채우기 위해서 width:100% 를 줌 css로 옮겨도 지장 없지만 귀찮-->
+                    <input type="text" ng-model="find_mail" class="find-form-input" style="width: 99%;">
+                </span>
+        </md-input-container>
+        <md-button class="md-icon-button" ng-click="star_click()">
+            <md-icon aria-label="Menu" md-svg-icon="./icon/ic_star_black_24px.svg">
+            </md-icon>
+        </md-button>
+        <md-button class="md-icon-button">
+            <md-icon aria-label="Menu" md-svg-icon="./icon/ic_add_white_24px.svg">
+            </md-icon>
+        </md-button>
+        <md-button class="md-icon-button">
+            <md-icon aria-label="Menu" md-svg-icon="./icon/ic_shopping_cart_white_24px.svg">
+            </md-icon>
+        </md-button>
+    </div>
+</md-toolbar>
