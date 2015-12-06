@@ -8,7 +8,8 @@
         <h1 class="home-text">Inbox Test </h1>
         <!-- md-input-container 있으니깐 썻다. 쓴다면 나중에 여러 조건에서 쓰기 편리하다. material-angular의 홈페이지의 md-input 에 대해 알아보자-->
         <md-input-container class="find-form" flex layout="row">
-                <span>
+            <!-- 검색아이콘이 검색창을 잡아먹는다 모바일에서는 빼자-->
+                <span hide-sm>
                     <md-icon aria-label="Menu" md-svg-icon="./icon/ic_search_white_24px.svg" class="search_icon">
                     </md-icon>
                 </span>
@@ -17,17 +18,42 @@
                     <input type="text" ng-model="find_mail" class="find-form-input" style="width: 99%;">
                 </span>
         </md-input-container>
-        <md-button class="md-icon-button" ng-click="star_click()">
+        <md-button class="md-icon-button" ng-click="star_click()" hide-sm>
             <md-icon aria-label="Menu" md-svg-icon="./icon/ic_star_black_24px.svg">
             </md-icon>
         </md-button>
-        <md-button class="md-icon-button">
+        <md-button class="md-icon-button" hide-sm>
             <md-icon aria-label="Menu" md-svg-icon="./icon/ic_add_white_24px.svg">
             </md-icon>
         </md-button>
-        <md-button class="md-icon-button">
+        <md-button class="md-icon-button" hide-sm>
             <md-icon aria-label="Menu" md-svg-icon="./icon/ic_shopping_cart_white_24px.svg">
             </md-icon>
         </md-button>
+        <md-menu hide-gt-sm>
+            <md-button class="md-icon-button" ng-click="openMenu($mdOpenMenu, $event)">
+                <md-icon md-menu-origin md-svg-icon="./icon/ic_more_vert_white_24px.svg"></md-icon>
+            </md-button>
+            <md-menu-content width="1">
+                <md-menu-item>
+                    <md-button ng-click="star_click()">
+                        <md-icon aria-label="Menu" md-svg-icon="./icon/ic_star_grey_24px.svg">
+                        </md-icon>
+                    </md-button>
+                </md-menu-item>
+                <md-menu-item>
+                    <md-button>
+                        <md-icon aria-label="Menu" md-svg-icon="./icon/ic_add_grey_24px.svg">
+                        </md-icon>
+                    </md-button>
+                </md-menu-item>
+                <md-menu-item>
+                    <md-button>
+                        <md-icon aria-label="Menu" md-svg-icon="./icon/ic_shopping_cart_grey_24px.svg">
+                        </md-icon>
+                    </md-button>
+                </md-menu-item>
+            </md-menu-content>
+        </md-menu>
     </div>
 </md-toolbar>

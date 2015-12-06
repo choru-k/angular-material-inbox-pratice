@@ -12,7 +12,7 @@
     <!-- 그 사이드바에 폰트가 너무 두꺼워서 폰트를 바꾸기 위해 webfont를 사용-->
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
     <!-- 메일창이 떠오르는것을 애니메이션하기 위해 animate.css 라는 라이브러리를 추가하였다. css animate 을 검색하여 참고하면서 알아보자-->
-    <link href="animate.css" rel="stylesheet">
+    <link href="library/animate.css" rel="stylesheet">
 
     <link rel="stylesheet" href="custom.css">
     <script src="app.js"></script>
@@ -20,15 +20,17 @@
 
 <body layout="column" ng-controller="AppController">
 <!-- ng-include을 사용함으로써 더욱더 모듈화가 되었다. 이제 훨씬 코드 보기가 편할것 같다-->
-    <ng-include src="'header.html'"></ng-include>
+    <ng-include src="'view/header.html'" class="header"></ng-include>
     <div layout="row" layout="wrap" flex>
         <!-- 원래 div에서 하던걸 ng-include에서 처리한다 예를들어 클래스 sidebar나 ng-show라던가 -->
-        <ng-include src="'sidebar.html'" class="sidebar" ng-hide="!nav"></ng-include>
+        <!-- ng-include마다 class를 html명으로 추가한다. 이를 통해 less에서 html명으로 하나의 스타일을 묶음 으로써
+            어떤 html에 어떤 style이 들어가는지 좀더 간략적으로 볼수있다 -->
+        <ng-include src="'view/sidebar.html'" class="sidebar" ng-hide="!nav"></ng-include>
         <!-- height를 전부다 쓰기 위해 layout='column'을 사용하였다 한번 지워보면 바로 안다-->
-        <ng-include src="'main.html'" flex layout="column"></ng-include>
-        <ng-include src="'star.html'"></ng-include>
+        <ng-include src="'view/main.html'" flex layout="column" class="main"></ng-include>
+        <ng-include src="'view/star.html'"></ng-include>
     </div>
-    <ng-include src="'fab.html'"></ng-include>
+    <ng-include src="'view/fab.html'"></ng-include>
 <!-- Angular Material Dependencies -->
 </body>
 

@@ -1,0 +1,118 @@
+
+//less 의 변수사용을 사용하였다. backgournd에 사용하였던 회색을 backgroundGrey라는 변수로 바꾸었다.
+@backgroundGrey : #f2f2f2;
+
+//sidebar.html의 스타일을 만들었다
+.sidebar {
+  background: @backgroundGrey;
+  width : 200px;
+  transition: 0.3s linear all;
+  overflow: hidden;
+  /* sidebar라는 것에 ng-hide가 추가되면 width:0로 만드는데 그게 app.js에 있는 ngAnimate가 그 작동을 수행함 hide자체가 애니메이션화됨
+    자세한 사항은 ngAnimate와 css animation을 참조*/
+  &.ng-hide {
+    width: 0;
+  }
+  /* 사이드바의 폰트를 바꿈 */
+  .nav_button {
+    margin: 0;
+    padding: 10px;
+    font-family: 'Open Sans', sans-serif;
+    text-align: left;
+  }
+  /* 같은곳에서 시작하기 위해 icon의 width를 */
+  .sidebar-icon {
+    width: 50px;
+  }
+}
+
+//sidebar.html의 스타일을 만들었다
+.main {
+  /*  md-content와 nav의 배경색을 그레이로 주어서 전체 색깔이 grey가 되었다
+    그후 mail-box 클래스(즉 실제 내용부분)은 white컬러와 html을 보면 md-whiteframe을 추가하여 입체감을 주어서 카드느낌이 나게 되었다*/
+  md-content {
+    background: @backgroundGrey;
+  }
+  .mail-box {
+    background: white;
+    max-width: 900px;
+    /* now-mail박스만 커보이게 보이기 위해 다른 메일 박스에 마진을 주어서 크기를 줄인다*/
+    margin-left: 20px;
+    margin-right: 20px;
+    .mail-box-list{
+      padding: 0;
+      .from-span {
+        width: 100px;
+      }
+      .from-icon {
+        width: 20px;
+        height: 20px;
+        margin-left: 20px;
+      }
+      .mail-box-list-item{
+
+      }
+      .email_context {
+        color: #909090;
+      }
+    }
+    .now-mail {
+      /* 나우 메일 박스는 중간에 들어가기 때문에 위 아래에는 마진을 주어서 박스 사이를 띄게 하고
+          옆쪽에는 마진을 0으로 주어서 다른 박스보다 크게 보이게 한다
+          그리고 다른 박스보다 오른쪽 왼쪽 20px 20px 씩 크기 때문에 전체 max-width도 40px 더 크게 설정한다*/
+      margin-top: 10px;
+      margin-bottom: 10px;
+      margin-left: 0;
+      margin-right: 0;
+      max-width: 940px;
+      .now-mail-header {
+        background: white;
+        color: black;
+      }
+      .now-mail-context {
+        background: white;
+      }
+    }
+
+  }
+}
+
+//header.html의 스타일
+.header {
+  .home-text{
+    width: 150px;
+  }
+  /* 찾기 창의 색을 변경하고 어느정도 패딩을 줌으로써 사각형안에 글을 쓰는 느낌을 준다. */
+  .find-form {
+    padding: 5px;
+    background: #E57373;
+    border-radius: 3px;
+  }
+  .search_icon{
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+  input.find-form-input{
+    color: white;
+  }
+}
+
+//star.html의 스타일
+#star_menu {
+  width: 320px;
+  height: 200px;
+  position: fixed;
+  right: 100px;
+  top: 68px;
+  background: white;
+  .star_menu_icon {
+    margin: 0;
+  }
+}
+
+//fab.html의 스타일
+.fab {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+}
